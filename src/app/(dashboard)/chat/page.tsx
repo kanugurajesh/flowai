@@ -7,7 +7,6 @@ import { ChatInput } from "@/components/chat/ChatInput";
 import { Button } from "@/components/ui/Button";
 import { Spinner } from "@/components/ui/Spinner";
 import toast from "react-hot-toast";
-import type { ChatMessage as ChatMessageType } from "@/types";
 
 interface Message {
   id: string;

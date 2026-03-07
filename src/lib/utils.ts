@@ -35,6 +35,18 @@ export function formatMinutes(minutes: number) {
   return mins > 0 ? `${hours}h ${mins}m` : `${hours}h`;
 }
 
+export const priorityColor = {
+  HIGH: "red" as const,
+  MEDIUM: "yellow" as const,
+  LOW: "green" as const,
+};
+
+export const statusColor = {
+  TODO: "default" as const,
+  IN_PROGRESS: "blue" as const,
+  DONE: "green" as const,
+};
+
 export const PROJECT_COLORS = [
   "#6366f1",
   "#8b5cf6",

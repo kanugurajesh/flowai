@@ -2,12 +2,10 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { Header } from "@/components/layout/Header";
 import { Badge } from "@/components/ui/Badge";
-import { formatRelativeTime, formatMinutes } from "@/lib/utils";
+import { formatRelativeTime, formatMinutes, priorityColor, statusColor } from "@/lib/utils";
 import Link from "next/link";
 
 const statusLabel = { TODO: "To Do", IN_PROGRESS: "In Progress", DONE: "Done" };
-const statusColor = { TODO: "default" as const, IN_PROGRESS: "blue" as const, DONE: "green" as const };
-const priorityColor = { HIGH: "red" as const, MEDIUM: "yellow" as const, LOW: "green" as const };
 
 export default async function TasksPage() {
   const session = await auth();

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Textarea } from "@/components/ui/Textarea";
 import { Badge } from "@/components/ui/Badge";
-import { formatMinutes } from "@/lib/utils";
+import { formatMinutes, priorityColor } from "@/lib/utils";
 import type { AiTask } from "@/types";
 
 interface GoalBreakdownFormProps {
@@ -81,12 +81,6 @@ export function GoalBreakdownForm({
       setSaving(false);
     }
   }
-
-  const priorityColor = {
-    HIGH: "red" as const,
-    MEDIUM: "yellow" as const,
-    LOW: "green" as const,
-  };
 
   return (
     <div className="space-y-4">

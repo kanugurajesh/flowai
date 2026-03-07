@@ -3,14 +3,8 @@
 import { useState } from "react";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { formatMinutes } from "@/lib/utils";
+import { formatMinutes, priorityColor } from "@/lib/utils";
 import type { Task } from "@/types";
-
-const priorityColor = {
-  HIGH: "red" as const,
-  MEDIUM: "yellow" as const,
-  LOW: "green" as const,
-};
 
 interface TaskCardProps {
   task: Task;

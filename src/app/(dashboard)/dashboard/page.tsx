@@ -2,33 +2,8 @@ import { auth } from "@/lib/auth";
 import { Header } from "@/components/layout/Header";
 import { StatsCard } from "@/components/dashboard/StatsCard";
 import { Badge } from "@/components/ui/Badge";
-import { formatRelativeTime } from "@/lib/utils";
+import { formatRelativeTime, priorityColor, statusColor } from "@/lib/utils";
 import Link from "next/link";
-
-async function getDashboardData() {
-  try {
-    const res = await fetch(`${process.env.NEXTAUTH_URL}/api/dashboard`, {
-      cache: "no-store",
-      headers: { cookie: "" },
-    });
-    if (!res.ok) return null;
-    return res.json();
-  } catch {
-    return null;
-  }
-}
-
-const priorityColor = {
-  HIGH: "red" as const,
-  MEDIUM: "yellow" as const,
-  LOW: "green" as const,
-};
-
-const statusColor = {
-  TODO: "default" as const,
-  IN_PROGRESS: "blue" as const,
-  DONE: "green" as const,
-};
 
 export default async function DashboardPage() {
   const session = await auth();
