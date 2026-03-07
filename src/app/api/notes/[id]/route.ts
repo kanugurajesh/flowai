@@ -42,9 +42,15 @@ export async function PATCH(
 
   try {
     const body = await req.json();
+    const { title, content, summary, tags } = body;
+    const data: Record<string, unknown> = {};
+    if (title !== undefined) data.title = title;
+    if (content !== undefined) data.content = content;
+    if (summary !== undefined) data.summary = summary;
+    if (tags !== undefined) data.tags = tags;
     const note = await prisma.note.update({
       where: { id },
-      data: body,
+      data,
     });
     return NextResponse.json(note);
   } catch {

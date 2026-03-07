@@ -24,7 +24,8 @@ export function AISummaryPanel({
   const [error, setError] = useState("");
   const [result, setResult] = useState<AiSummary | null>(() => {
     if (initialSummary) {
-      const tags: string[] = JSON.parse(initialTags || "[]");
+      let tags: string[] = [];
+      try { tags = JSON.parse(initialTags || "[]"); } catch { tags = []; }
       return { summary: initialSummary, tags, keyPoints: [] };
     }
     return null;

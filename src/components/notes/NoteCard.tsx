@@ -7,7 +7,8 @@ interface NoteCardProps {
 }
 
 export function NoteCard({ note }: NoteCardProps) {
-  const tags: string[] = JSON.parse(note.tags || "[]");
+  let tags: string[] = [];
+  try { tags = JSON.parse(note.tags || "[]"); } catch { tags = []; }
 
   return (
     <Link

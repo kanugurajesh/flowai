@@ -36,7 +36,13 @@ export default function RegisterPage() {
       }
 
       // Auto sign in
-      await signIn("credentials", { email, password, redirect: false });
+      const result = await signIn("credentials", { email, password, redirect: false });
+      if (result?.error) {
+        setError("Account created but sign-in failed. Please log in manually.");
+        setLoading(false);
+        router.push("/login");
+        return;
+      }
       router.push("/dashboard");
       router.refresh();
     } catch {

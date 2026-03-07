@@ -25,9 +25,17 @@ export async function PATCH(
 
   try {
     const body = await req.json();
+    const { status, order, title, description, priority, estimateMin } = body;
+    const data: Record<string, unknown> = {};
+    if (status !== undefined) data.status = status;
+    if (order !== undefined) data.order = order;
+    if (title !== undefined) data.title = title;
+    if (description !== undefined) data.description = description;
+    if (priority !== undefined) data.priority = priority;
+    if (estimateMin !== undefined) data.estimateMin = estimateMin;
     const task = await prisma.task.update({
       where: { id },
-      data: body,
+      data,
     });
     return NextResponse.json(task);
   } catch {

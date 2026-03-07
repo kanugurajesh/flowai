@@ -20,6 +20,7 @@ model User {
   accounts     Account[]
   sessions     Session[]
   projects     Project[]
+  tasks        Task[]
   notes        Note[]
   chatMessages ChatMessage[]
 }
@@ -89,6 +90,7 @@ model Task {
   updatedAt    DateTime @updatedAt
 
   project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Note {
